@@ -15,7 +15,7 @@ build-linux:
   image: golang:latest
   stage: build
   script:
-    - go build -v ./...
+    - go build -v
   tags:
     - docker
   only:
@@ -26,7 +26,7 @@ build-linux:
 build-macos:
   stage: build
   script:
-    - go build -v ./...
+    - go build -v
   tags:
     - macos
   only:
@@ -37,7 +37,7 @@ build-macos:
 build-windows:
   stage: build
   script:
-    - go build -v ./...
+    - go build -v
   tags:
     - windows
   only:
