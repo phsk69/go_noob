@@ -1,0 +1,46 @@
+
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  image: golang:latest
+  script:
+    - go test -v 
+  tags:
+    - docker
+
+build-linux:
+  image: golang:latest
+  stage: build
+  script:
+    - go build -v ./...
+  tags:
+    - docker
+  only:
+    - /^feature/.*$/
+    - develop
+    - main
+
+build-macos:
+  stage: build
+  script:
+    - go build -v ./...
+  tags:
+    - macos
+  only:
+    - /^feature/.*$/
+    - develop
+    - main
+
+build-windows:
+  stage: build
+  script:
+    - go build -v ./...
+  tags:
+    - windows
+  only:
+    - /^feature/.*$/
+    - develop
+    - main
